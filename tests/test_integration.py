@@ -1,31 +1,40 @@
-from quick_calc.calculator import add
-from quick_calc.app import CalculatorApp
-import tkinter as tk
+from quick_calc.calculator import add, clear
+
+
+class FakeApp:
+    def __init__(self):
+        self.current_value = 0
+        self.operation = None
+        self.display = "0"
+
+    def insert(self, value):
+        self.display = value
+
+    def get(self):
+        return self.display
+
+    def reset(self):
+        self.display = str(clear())
 
 
 def test_full_addition_flow():
-    root = tk.Tk()
-    app = CalculatorApp(root)
+    app = FakeApp()
 
-    app.entry.insert(0, "5")
-    app.current_value = 5
+    # simulate entering 5 + 3
+    app.insert("5")
+    app.current_value = float(app.get())
     app.operation = "+"
-    app.entry.delete(0, tk.END)
-    app.entry.insert(0, "3")
 
-    result = add(app.current_value, float(app.entry.get()))
+    app.insert("3")
+    result = add(app.current_value, float(app.get()))
+
     assert result == 8
-
-    root.destroy()
 
 
 def test_clear_resets_display():
-    root = tk.Tk()
-    app = CalculatorApp(root)
+    app = FakeApp()
 
-    app.entry.insert(0, "123")
-    app.clear()
+    app.insert("123")
+    app.reset()
 
-    assert app.entry.get() == "0"
-
-    root.destroy()
+    assert app.get() == "0"

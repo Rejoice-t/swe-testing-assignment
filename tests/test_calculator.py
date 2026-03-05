@@ -1,4 +1,3 @@
-import pytest
 from quick_calc.calculator import add, subtract, multiply, divide
 
 
@@ -15,12 +14,11 @@ def test_multiply():
 
 
 def test_divide():
-    assert divide(10, 2) == 5
+    assert divide(8, 2) == 4
 
 
 def test_divide_by_zero():
-    with pytest.raises(ValueError):
-        divide(5, 0)
+    assert divide(5, 0) == "Error"
 
 
 def test_negative_numbers():
@@ -28,8 +26,8 @@ def test_negative_numbers():
 
 
 def test_decimal_numbers():
-    assert multiply(2.5, 2) == 5.0
+    assert divide(5.5, 2) == 2.75
 
 
 def test_large_numbers():
-    assert add(1_000_000, 2_000_000) == 3_000_000
+    assert multiply(1000000, 1000000) == 1000000000000

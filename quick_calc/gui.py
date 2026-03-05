@@ -46,6 +46,7 @@ class QuickCalc:
 
         elif char == "=":
             second_value = float(self.display.get())
+
             if self.operation == "+":
                 result = add(self.current_value, second_value)
             elif self.operation == "-":
@@ -54,6 +55,8 @@ class QuickCalc:
                 result = multiply(self.current_value, second_value)
             elif self.operation == "/":
                 result = divide(self.current_value, second_value)
+            else:
+                result = "Error"
 
             self.display.delete(0, tk.END)
             self.display.insert(0, str(result))
