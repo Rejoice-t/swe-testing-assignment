@@ -1,3 +1,6 @@
+![Tests](https://img.shields.io/badge/tests-10%20passed-brightgreen)
+![Version](https://img.shields.io/badge/version-v1.0.0-orange)
+
 # swe-testing-assignment
 # Quick-Calc
 
